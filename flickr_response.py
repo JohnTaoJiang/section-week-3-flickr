@@ -8,6 +8,7 @@ photo_diction = flickr_response['photo']
 
 class Photo:
     def __init__(self, photo):
-        pass
+        self.username = photo['owner']['username']
+        
 
 Photo(photo_diction)
