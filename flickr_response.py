@@ -1,12 +1,14 @@
 import json
 
-with open('sample_diction.json') as f:
+with open('sample_diction.json') as f:  # with clause: file is closed automaticlly
     diction_string = f.read()
 
 flickr_response = json.loads(diction_string)
 photo_diction = flickr_response['photo']
 
-class Photo:
+
+class Photo(object):
+
     def __init__(self, photo):
         self.username = photo['owner']['username']
 
@@ -34,10 +36,10 @@ ID: {3}""".format(self.title, self.username, self.url, self.id)
         return result
 
 
-
 pd = Photo(photo_diction)
-print("__str__", str(pd)) #  or print(str(pd))
-print("__repr__", repr(pd)) # or print(pd.__repr__())
+# or print(str(pd)) Note that str() method is called by default
+print("__str__\n", pd)
+print("__repr__\n", repr(pd))  # or print(pd.__repr__())
 
 if 'nature' in pd:
-    print('Yey nature in the object!')
+    print('Yes!')
